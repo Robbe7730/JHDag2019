@@ -16,7 +16,7 @@ class Party(db.Model):
     def __repr__(self):
         return f"<Party {id}> {name}: {score}"
 
-admin = Admin(app, name='microblog', template_mode='bootstrap3')
+admin = Admin(app, name='Jonge Heldendag 2019', template_mode='bootstrap3')
 admin.add_view(ModelView(Party, db.session))
 
 @app.route('/')
