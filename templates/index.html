@@ -12,8 +12,8 @@
     <body>
       {% for key, value in parties.items() %}
         <div class="progress-wrapper">
-          <progress class="progress is-medium" value="{{value}}" max="100">90%</progress>
-          <p class="progress-value has-text-white">{{key}}: {{value}}%</p>
+          <progress class="progress is-medium" value="{{value}}" max="{{total}}">{{100 * value / total}}%</progress>
+          <p class="progress-value has-text-white">{{key}}: {{'%0.1f' | format(100 * value/total)}}%</p>
         </div>
       {% endfor %}
     </body>
