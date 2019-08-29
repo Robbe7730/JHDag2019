@@ -16,5 +16,15 @@
           <p class="progress-value has-text-white">{{party.name}}: {{'%0.1f' | format(100 * party.score/total)}}%</p>
         </div>
       {% endfor %}
+      {% for message in messages %}
+        <article class="message">
+          <div class="message-header">
+            <p>{{message.title}}</p>
+          </div>
+          <div class="message-body">
+            {{message.content}}
+          </div>
+        </article>
+      {% endfor %}
     </body>
 </html>
