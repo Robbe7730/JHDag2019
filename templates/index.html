@@ -1,30 +1,51 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <title>Jonge Heldendag 2019</title>
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
 
-    <body>
-      {% for party in parties %}
-        <div class="progress-wrapper">
-          <progress class="progress is-medium" value="{{party.score}}" max="{{total}}">{{100 * party.score / total}}%</progress>
-          <p class="progress-value has-text-white">{{party.name}}: {{'%0.1f' | format(100 * party.score/total)}}%</p>
+    <body class="has-navbar-fixed-top">
+      <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <img src="{{ url_for('static', filename='jonge helden.png') }}" alt="Jonge Helden"/>
+          </a>
         </div>
-      {% endfor %}
-      {% for message in messages %}
-        <article class="message">
-          <div class="message-header">
-            <p>{{message.title}}</p>
+      </nav>
+
+      <section class="section">
+        <h1 class="title">
+          Tussenstand
+        </h1>
+        {% for party in parties %}
+          <div class="progress-wrapper">
+            <progress class="progress is-medium" value="{{party.score}}" max="{{total}}">{{100 * party.score / total}}%</progress>
+            <p class="progress-value has-text-white">{{party.name}}: {{'%0.1f' | format(100 * party.score/total)}}%</p>
           </div>
-          <div class="message-body">
-            {{message.content}}
-          </div>
-        </article>
-      {% endfor %}
+        {% endfor %}
+      </section>
+      
+      <section class="section">
+        <h1 class="title">
+          Berichten
+        </h1>
+        {% for message in messages %}
+          <article class="message">
+            <div class="message-header">
+              <p>{{message.title}}</p>
+            </div>
+            <div class="message-body">
+              {{message.content}}
+            </div>
+          </article>
+        {% endfor %}
+      </section>
     </body>
 </html>
