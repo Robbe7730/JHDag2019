@@ -21,10 +21,13 @@ class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(32), nullable=False)
     content = db.Column(db.String(1024), nullable=False)
-    created_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    created_date = db.Column(db.DateTime, default=datetime.datetime.now)
+
+    def dateString(self):
+        return self.created_date.strftime("%H:%M")
 
     def __repr__(self):
-        return f"<Party {self.id}> {self.title}: {self.content[:32]}"
+        return f"<Message {self.id}> {self.title}: {self.content[:32]}"
 
 admin = Admin(app, name='Jonge Heldendag 2019', template_mode='bootstrap3')
 admin.add_view(ModelView(Party, db.session))
