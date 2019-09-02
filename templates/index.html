@@ -20,33 +20,35 @@
         </div>
       </nav>
 
-      <section class="section">
-        <h1 class="title">
-          Tussenstand
-        </h1>
-        {% for party in parties %}
-          <div class="progress-wrapper">
-            <progress class="progress is-medium" value="{{party.score}}" max="{{total}}">{{100 * party.score / total}}%</progress>
-            <p class="progress-value has-text-white">{{party.name}}: {{'%0.1f' | format(100 * party.score/total)}}%</p>
-          </div>
-        {% endfor %}
-      </section>
-      
-      <section class="section">
-        <h1 class="title">
-          Berichten
-        </h1>
-        {% for message in messages %}
-          <article class="message">
-            <div class="message-header">
-              <p>{{message.title}}</p>
-              <p>{{message.dateString()}}
+      <div class="columns">
+        <section class="column section">
+          <h1 class="title">
+            Tussenstand
+          </h1>
+          {% for party in parties %}
+            <div class="progress-wrapper">
+              <progress class="progress is-medium" value="{{party.score}}" max="{{total}}">{{100 * party.score / total}}%</progress>
+              <p class="progress-value has-text-white">{{party.name}}: {{'%0.1f' | format(100 * party.score/total)}}%</p>
             </div>
-            <div class="message-body">
-              {{message.content}}
-            </div>
-          </article>
-        {% endfor %}
-      </section>
+          {% endfor %}
+        </section>
+        
+        <section class="column section">
+          <h1 class="title">
+            Berichten
+          </h1>
+          {% for message in messages %}
+            <article class="message">
+              <div class="message-header">
+                <p>{{message.title}}</p>
+                <p>{{message.dateString()}}
+              </div>
+              <div class="message-body">
+                {{message.content}}
+              </div>
+            </article>
+          {% endfor %}
+        </section>
+      </div>
     </body>
 </html>
