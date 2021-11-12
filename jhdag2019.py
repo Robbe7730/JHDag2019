@@ -45,3 +45,6 @@ def root():
     total = sum([p.score for p in parties])
     messages = Message.query.order_by(Message.created_date.desc()).all()
     return render_template("index.html", parties=parties, total=total, messages=messages)
+
+if __name__ == '__main__':
+    app.run('0.0.0.0', 3000)
