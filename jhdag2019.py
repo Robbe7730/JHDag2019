@@ -4,10 +4,11 @@ from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 import pytz
 import datetime
+import os
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
-app.secret_key = "JongeHeldenDag2019"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ["SQLALCHEMY_DATABASE_URI"] or "sqlite:///database.db"
+app.secret_key = os.environ["SQLALCHEMY_SECRET_KEY"] or "JongeHeldenDag2019"
 db = SQLAlchemy(app)
 
 brussels_timezone = pytz.timezone('Europe/Brussels')
